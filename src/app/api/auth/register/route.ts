@@ -13,7 +13,15 @@ export async function POST(req: NextRequest) {
   }
 
   const hashed = await bcrypt.hash(password, 10);
-  await new User({ email, password: hashed }).create();
-
-  return NextResponse.json({ message: "User registered" });
+  
+  try {
+    await User.create({ email, password: hashed });
+    return NextResponse.json({ message: "User registered successfully" }, { status: 201 });
+  } catch (error) {
+    console.error('Registration error:', error);
+    return NextResponse.json(
+      { error: "Failed to register user" },
+      { status: 500 }
+    );
+  }
 }

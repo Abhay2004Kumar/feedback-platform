@@ -35,7 +35,12 @@ export default function CreateForm() {
   const handleChange = (i: number, key: keyof Question, value: string) => {
     setQuestions(prevQs => {
       const newQs = [...prevQs];
-      newQs[i] = { ...newQs[i], [key]: value };
+      // If changing question type, reset options if switching to text
+      if (key === 'type' && value === 'text') {
+        newQs[i] = { ...newQs[i], [key]: value, options: [] };
+      } else {
+        newQs[i] = { ...newQs[i], [key]: value };
+      }
       return newQs;
     });
   };
@@ -78,10 +83,15 @@ export default function CreateForm() {
       }
 
       const hasInvalidQuestions = questions.some(q => {
+        // Check if question text is empty
         if (!q.question.trim()) return true;
-        if ((q.type === 'select' || q.type === 'multiple') && q.options.some(opt => !opt.trim())) {
-          return true;
+        
+        // For multiple choice questions, check if there are at least 2 options
+        if (q.type === 'multiple') {
+          if (q.options.length < 2) return true;
+          if (q.options.some(opt => !opt.trim())) return true;
         }
+        
         return false;
       });
 
@@ -129,14 +139,19 @@ export default function CreateForm() {
             className="mb-2"
           />
           <Label>Type</Label>
-          <select
-            value={q.type}
-            onChange={(e) => handleChange(i, "type", e.target.value)}
-            className="mb-2 w-full p-2 rounded-md border"
-          >
-            <option value="text">Text</option>
-            <option value="multiple">Multiple Choice</option>
-          </select>
+          <div className="mb-2">
+            <select
+              value={q.type}
+              onChange={(e) => handleChange(i, "type", e.target.value as QuestionType)}
+              className="w-full p-2 rounded-md border"
+            >
+              <option value="text">Text Input</option>
+              <option value="multiple">Multiple Choice</option>
+            </select>
+            {q.type === 'text' && (
+              <p className="text-xs text-gray-500 mt-1">Respondents will see a text input field</p>
+            )}
+          </div>
 
           {q.type === "multiple" &&
             q.options.map((opt, j) => (

@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Feedback Platform
 
-## Getting Started
+A modern, full-stack feedback collection and management system built with Next.js, TypeScript, and MongoDB.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Form Creation**: Create custom feedback forms with multiple question types
+- **Response Collection**: Gather responses from users with ease
+- **Analytics Dashboard**: View and analyze form responses
+- **User Authentication**: Secure signup and login system
+- **Real-time Updates**: Get instant updates on new form submissions
+- **Shareable Links**: Easily share your forms with respondents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 13+ with App Router
+- **Styling**: Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT (JSON Web Tokens)
+- **Type Safety**: TypeScript
+- **State Management**: React Context API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 16.14 or later
+- MongoDB Atlas account or local MongoDB instance
+- npm or yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Abhay2004Kumar/feedback-platform.git
+   cd feedback-platform
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add:
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   NEXTAUTH_URL=http://localhost:3000
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📝 Usage
+
+1. **Create an account** or log in
+2. **Create a new form** with your desired questions
+3. **Customize** form settings and appearance
+4. **Share** the form link with respondents
+5. **View responses** in your dashboard
+
+## 📊 Features in Detail
+
+### Form Builder
+- Create forms with multiple question types
+- Add required/optional questions
+- Preview forms before publishing
+
+### Response Management
+- View all responses in one place
+- Export responses as CSV/Excel
+- Filter and sort responses
+
+### User Dashboard
+- Overview of all your forms
+- Response analytics
+- Form status management
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with Next.js and MongoDB
+- UI components powered by shadcn/ui
+- Icons from Lucide React
